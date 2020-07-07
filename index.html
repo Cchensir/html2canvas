@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.js"></script>
+    <!-- <script src="./jspdf.min.js"></script>
+    
+    <script src="./jspdf.debug.js"></script> -->
+    <script src="./html2canvas.js"></script>
+    <style>
+        #admin {
+            width: 400PX;
+            height: 400px;
+            background: yellow;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="admin">
+        写点文字
+    </div>
+    <!-- <img src="" alt=""> -->
+    <!-- <iframe src="./1.html" id="iframe"></iframe> -->
+    <!-- <input type="file" id="file"> -->
+</body>
+<script>
+    // var pdf = new jsPDF('1', 'pt', 'a4');
+    // pdf.setProperties({//设置文档属性
+    //     title: 'Title',
+    //     subject: 'This is the subject',
+    //     author: 'Dragon',
+    //     keywords: 'javascript, web 2.0, ajax',
+    //     creator: 'MEEE'
+    // })
+    // var count = 0
+    // var iframe = document.getElementById("iframe")
+    var admin = document.getElementById("admin")
+    html2canvas(admin, {
+        dpi: 300,  //解决生产图片模糊
+        width: 490, //canvas宽度
+        height: 240,//canvas高度
+        x: 0, //x坐标
+        y: 0, //y坐标
+        foreignObjectRendering: true, //是否在浏览器支持的情况下使用ForeignObject渲染
+        useCORS: true,  //是否尝试使用CORS从服务器加载图像
+        async: false, //是否异步解析和呈现元素
+        onrendered:
+            function
+                (canvas) {
+                document.body.appendChild(canvas);
+                var pageData = canvas.toDataURL('image/png', 1.0);
+                console.log(pageData)
+            }
+    });
+  //  var pageData = canvas.toDataURL('image/png', 1.0);
+// var contentWidth = canvas.width;
+                // var contentHeight = canvas.height;
+                // var pageHeight = contentWidth / 592.28 * 841.89;
+                // var leftHeight = contentHeight;
+                // var position = 0;
+                // pdf.addImage(pageData, 'JPEG', 0, 0);
+                // count++
+                // if (count < box.length) {
+                //     pdf.addPage();
+                // }
+                // if (count == box.length) {
+                //     // console.log(pdf)
+                //     var a = pdf.output('dataurlstring')
+                //     console.log(dataURLtoBlob(a))
+                //     // pdf.output('datauri');//直接输出为新的web页
+                //     // pdf.save('测试.pdf')
+                // }
+</script>
+
+</html>
